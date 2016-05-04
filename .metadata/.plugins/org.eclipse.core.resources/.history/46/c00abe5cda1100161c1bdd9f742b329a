@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Dashboard</title>
+
+<link type="text/css" rel="stylesheet" href="../Css/main.css">
+<script type="text/javascript" src="../js/fusioncharts-suite-xt/js/fusioncharts.js"></script>
+<script type="text/javascript" src="../js/fusioncharts-suite-xt/js/fusioncharts.charts.js"></script>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../js/bootstrap/css/bootstrap.css">
+<script type="text/javascript" src="../js/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/fusioncharts-jquery-plugin.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" src="../Controller/genPanelSE.js"></script>
+
+<style>
+	#chart_1{
+		width:350px;
+		height:200px;
+		margin-top:94px;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	#bullet_1{
+		float:right;
+		margin-top:10px;
+		padding-right:10px;
+		width:210px;
+		height:74px;
+	}
+</style>
+</head>
+<body>
+<!-- header -->
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span10">
+			<div id="colHead">
+				<h4>Goal 2 S&T Core Capability and Clustering <br/> 
+				- - - - - - - - - - - - - - - - - - - - - - - -<br/> 
+				SK 2-High Impact Research  20 % </h4>
+			</div>
+		</div>
+		<div class="span2"> 
+			<div id="doughnut">doughnut2d</div>
+		</div>
+	</div>
+	<!-- content -->	
+	<div id=topContent class="row-fluid">
+	
+		<div class = "panel">
+			<div class = "page">
+					<div class = "pagehead" style="width:190px; height:10px; background:#e2b2ae;"></div>
+					<div class = "pageleft">
+						<a href="#" id="prev1" onclick="return false;"><img src="../img/1461912837_icon-arrow-left-b.png" style="float:left;"></a>
+					</div>
+					<div class = "pageright">
+			        	<a href="#" id="next1" onclick="return false;"><img src="../img/1461912800_icon-arrow-right-b.png" style="float:right;"></a>
+				    </div>
+					<div class = "pagecontent">
+						<span id="panel_1_content">SKPI4</span>
+						<span id="panel_1_title">no data<p>%</p></span>
+					</div>
+			</div>
+			<div id="bullet_1">Bullet</div>		
+			<div id="chart_1" class="barchart">columnChart</div>
+			<div class = "panelTitleChart">
+				<p id="panelTitleChart_1"><b>จำนวนผลการวิจัยที่ตีพิมพ์ในวารสารระดับนานาชาติ<br>ต่อจำนวนบุคลากรสายวิชาการ</b></p>
+			</div>
+		</div>
+		
+		<!-- Panel TEST -->
+		<div class = "panel">
+			<div class = "page">
+				<div class = "pagehead" style="width:200px; height:10px; background:#e2b2ae;"></div>
+				<div class = "pageleft">
+					<a href="#" id="prev2" onclick="return false;"><img src="../img/1461912837_icon-arrow-left-b.png" style="float:left;"></a>
+				</div>
+				<div class = "pageright">
+		        	<a href="#" id="next2" onclick="return false;"><img src="../img/1461912800_icon-arrow-right-b.png" style="float:right;"></a>
+		        </div>
+				<div class = "pagecontent">
+					<span id="panel_2_content">SKPI4</span>
+					<span id="panel_2_title">no data</span>
+				</div>
+			</div>	
+			<div id="chart_2">columnChart</div> 
+			<div class = "panelTitleChart">
+				<span id="panelTitleChart_2"><b>จำนวนผลการวิจัยที่ตีพิมพ์ในวารสารระดับนานาชาติต่อจำนวนบุคลากรสายวิชาการ</b></span>
+			</div>	
+		</div>
+	
+<!-- 		<div id="panel"> -->
+<!-- 			<div class="row-fluid"> -->
+<!-- 				<div class="span5"> -->
+<!-- 					<div id="pagehead" class="row"></div> -->
+<!-- 					<div id="page" class="row"> -->
+<!-- 						<div class="span4"> -->
+<!-- 							<a href="#" id="prev1" onclick="return false;"><img src="../img/1461912837_icon-arrow-left-b.png"></a> -->
+<!-- 						</div> -->
+<!-- 						<div class="span4"> -->
+<!-- 							<div class="row"><span id="panel_1_content">SKPI4</span></div> -->
+<!-- 							<div class="row"><span id="panel_1_title">no data</span></div> -->
+<!-- 						</div> -->
+<!-- 						<div class="span4"> -->
+<!-- 							<a href="#" id="next1" onclick="return false;"><img src="../img/1461912800_icon-arrow-right-b.png"></a> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="span7"> -->
+<!-- 					<div id="bullet_1">Bullet</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="row-fluid"> -->
+<!-- 				<div id="chart_1">columnChart</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="row-fluid"> -->
+<!-- 				<p id="panelTitleChart_1"><b>จำนวนผลการวิจัยที่ตีพิมพ์ในวารสารระดับนานาชาติ<br>ต่อจำนวนบุคลากรสายวิชาการ</b></p> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+		
+<!-- 		<div id="panel"> -->
+<!-- 			<div class="row-fluid"> -->
+<!-- 				<div class="span5"> -->
+<!-- 					<div id="pagehead" class="row"></div> -->
+<!-- 					<div id="page" class="row"> -->
+<!-- 						<div class="span4"> -->
+<!-- 							<a href="#" id="prev2" onclick="return false;"><img src="../img/1461912837_icon-arrow-left-b.png"></a> -->
+<!-- 						</div> -->
+<!-- 						<div class="span4"> -->
+<!-- 							<div class="row"><span id="panel_2_content">SKPI4</span></div> -->
+<!-- 							<div class="row"><span id="panel_2_title">no data</span></div> -->
+<!-- 						</div> -->
+<!-- 						<div class="span4"> -->
+<!-- 							<a href="#" id="next2" onclick="return false;"><img src="../img/1461912800_icon-arrow-right-b.png"></a> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="span7"> -->
+<!-- 					<div id="bullet_1">Bullet</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="row-fluid"> -->
+<!-- 				<div id="chart_2">columnChart</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="row-fluid"> -->
+<!-- 				<p id="panelTitleChart_2"><b>จำนวนผลการวิจัยที่ตีพิมพ์ในวารสารระดับนานาชาติ<br>ต่อจำนวนบุคลากรสายวิชาการ</b></p> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+		
+	</div>
+</div>
+
+</body>
+</html>
