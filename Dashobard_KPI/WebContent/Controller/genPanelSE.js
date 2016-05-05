@@ -1,5 +1,6 @@
 // TEST GET DATA FROM MODEL page.jsp
 $( document ).ready(function() {
+
 	var listvalueTemp;
 	$.ajax({
 		url: "../Model/page.jsp",
@@ -18,33 +19,51 @@ $( document ).ready(function() {
 	
 	//genCylinder("#doughnut",null);
 	gendoughnut2d("#doughnut",null);
-	var panel_chart_count = 2;
+	//Chart  Count
+	var panel_chart_count = listvalueTemp.length;
+	
+	var content = "";
+	 for(j=0;j<panel_chart_count;j++){
+		  eval(" content += \" <div class = 'panel'> \"   " +
+		                  " + \" <div class = 'page'> \" " +
+		           "+ \" <div class = 'pagehead' style='width:180px; height:10px; background:#e2b2ae;'></div> \" " +
+		           "+ \" <div class='row-fluid'> \" " +
+		           "+ \" <div class='span4'> \" " +
+		           "+ \" <a href='#' id='prev"+(j+1)+"' onclick='return false;'><img src='../img/1461912837_icon-arrow-left-b.png' style='float:left;'></a> \" " +
+		           "+ \" </div> \" " +
+		           "+ \" <div id='pagecontent' class='span4'> \" " +
+		              "+ \" <div class='row-fluid'><span id='panel_"+(j+1)+"_content'>SKPI4</span></div> \" " +
+		              "+ \" <div class='row-fluid'><span id='panel_"+(j+1)+"_title'>no data</span></div> \" " +
+		           "+ \" </div> \" " +   
+		           "+ \" <div class='span4'> \" " +
+		           "+ \" <a href='#' id='next"+(j+1)+"' onclick='return false;'><img src='../img/1461912800_icon-arrow-right-b.png' style='float:right;'></a> \" " +
+			     " + \" </div> \" " +
+		         " + \" </div> \" " +
+		         " + \" </div> \" " +
+		         " + \" <div id='bullet_"+(j+1)+"' class='bulletbar' >Bullet</div> \"	" +
+		         " + \" <div id='chart_"+(j+1)+"' class='barchart' >columnChart</div> \" " +
+		         " + \" <div class = 'panelTitleChart'> \" " +
+		         " + \" <p id='panelTitleChart_"+(j+1)+"'><b>จำนวนผลการวิจัยที่ตีพิมพ์ในวารสารวิชาการระดับนานาชาติ<br>ต่อจำนวนบุคลากรสายวิชาการ</b></p> \" " +
+		         " + \" </div> \" " +
+		         " + \" </div> \";" );	 
 
-	//panel1
-	var panel_currentDetail1 = 1;
-	var valueList1 = listvalueTemp;
-	var panel_count1 = valueList1.length;
-	genPanel(listvalueTemp,"panel_1_title","panel_1_content");
-	var datasource1 = [];
-	datasource = getSource(panel_currentDetail1);
-	//datasourceb = getSource1(panel_currentDetail1);
-	genChart("#chart_1",datasource);
-	genBulletChart("#bullet_1",null);
-	//genBottom(panel_currentDetail1,"panelTitleChart_1");
-	
-	//panel2
-	var panel_currentDetail2 = 1;
-	var valueList2 = listvalueTemp;
-	var panel_count2 = valueList2.length;
-	genPanel(listvalueTemp,"panel_2_title","panel_2_content");
-	var datasource2 = [];
-	datasource2 = getSource(panel_currentDetail2);
-	genChart("#chart_2",datasource2);
-	//genBottom(panel_currentDetail1,"panelTitleChart_1");
-	
+	 }
+	 document.getElementById("Content").innerHTML=content;
+	 
+	 //GENDATA
+	 for(t=0;t<panel_chart_count;t++){
+	  eval(" var panel_currentDetail"+(t+1)+" = "+(t+1)+"; ");
+	  eval(" var valueList"+(t+1)+" = listvalueTemp; ");
+	  eval(" var panel_count"+(t+1)+" = valueList1.length; ");
+	  eval(" document.getElementById('panel_"+(t+1)+"_title').innerHTML = valueList"+(t+1)+"[(panel_currentDetail"+(t+1)+")-1][1]; ");
+	  eval(" document.getElementById('panel_"+(t+1)+"_content').innerHTML = valueList"+(t+1)+"[(panel_currentDetail"+(t+1)+")-1][0]; ");
+	  eval(" document.getElementById('panelTitleChart_"+(t+1)+"').innerHTML = valueList"+(t+1)+"[(panel_currentDetail"+(t+1)+")-1][2].substring(0,80); ");
+	  eval(" var datasource"+(t+1)+" = []; ");
+	  eval(" datasource"+(t+1)+" = getSource(panel_currentDetail"+(t+1)+",listvalueTemp); ");
+	  eval(" genChart('#chart_"+(t+1)+"',datasource"+(t+1)+"); ");
+	  eval(" genBulletChart('#bullet_"+(t+1)+"',listvalueTemp,panel_currentDetail"+(t+1)+"); ");
+	 }
 
-	
-	
 	//Gen Buttom start FOR
     for(i=0;i<panel_chart_count;i++){
     	eval("var temp_currentDetail"+(i+1)+"= panel_currentDetail"+(i+1)+";");	
@@ -55,11 +74,12 @@ $( document ).ready(function() {
     			" ++panel_currentDetail"+(i+1)+"; "+
     			" document.getElementById('panel_"+(i+1)+"_title').innerHTML = valueList"+(i+1)+"[(panel_currentDetail"+(i+1)+")-1][1]; "+
     			" document.getElementById('panel_"+(i+1)+"_content').innerHTML = valueList"+(i+1)+"[(panel_currentDetail"+(i+1)+")-1][0]; "+
-    			" var datasource = [];"+
-    			" var datasource = [];"+
-    			" datasource = getSource(panel_currentDetail"+(i+1)+");               "+
+    			" document.getElementById('panelTitleChart_"+(i+1)+"').innerHTML = valueList"+(i+1)+"[(panel_currentDetail"+(i+1)+")-1][2].substring(0,80);; "+
+    			" var datasource"+(i+1)+" = [];"+
+    			" datasource"+(i+1)+" = getSource(panel_currentDetail"+(i+1)+",listvalueTemp);               "+
     			//" genBottom(panel_currentDetail"+(i+1)+",panelTitleChart_"+(i+1)+");"+
-    			" genChart('#chart_"+(i+1)+"',datasource);                            "+
+    			" genChart('#chart_"+(i+1)+"',datasource"+(i+1)+");                            "+
+    			" genBulletChart('#bullet_"+(i+1)+"',listvalueTemp,panel_currentDetail"+(i+1)+");                            "+
     			"}"+
     			"});");
     	
@@ -69,31 +89,16 @@ $( document ).ready(function() {
     			" --panel_currentDetail"+(i+1)+"; "+
     			" document.getElementById('panel_"+(i+1)+"_title').innerHTML = valueList"+(i+1)+"[(panel_currentDetail"+(i+1)+")-1][1]; "+
     			" document.getElementById('panel_"+(i+1)+"_content').innerHTML = valueList"+(i+1)+"[(panel_currentDetail"+(i+1)+")-1][0]; "+
-    			" var datasource = [];"+
-    			" datasource = getSource(panel_currentDetail"+(i+1)+");               "+
+    			" document.getElementById('panelTitleChart_"+(i+1)+"').innerHTML = valueList"+(i+1)+"[(panel_currentDetail"+(i+1)+")-1][2].substring(0,80);; "+
+    			" var datasource"+(i+1)+" = [];"+
+    			" datasource"+(i+1)+" = getSource(panel_currentDetail"+(i+1)+",listvalueTemp);               "+
     	//		" genBottom(panel_currentDetail"+(i+1)+",panelTitleChart_"+(i+1)+");  "+
-    			" genChart('#chart_"+(i+1)+"',datasource);                            "+
+    			" genChart('#chart_"+(i+1)+"',datasource"+(i+1)+");                            "+
+    			" genBulletChart('#bullet_"+(i+1)+"',listvalueTemp,panel_currentDetail"+(i+1)+");                            "+
     			"}"+
     			"});");
 	
 }//end FOR	
-
-	function genPanel(vallist,idpanel,idcontent){
-				
-				var valueList = ["no setting"];
-				//check no config
-				if(vallist == null || idcontent == null){
-				//alert(valueList[0]);
-				}
-				else
-				{
-					var valueList = vallist; 	
-				// Percent %
-				document.getElementById(idpanel).innerHTML = listvalueTemp[0][1];
-				// SKPI XX
-				document.getElementById(idcontent).innerHTML = listvalueTemp[0][0];
-				}//end
-			}	
 	
 	function genChart(chart_id,datasource){
 		$(chart_id).insertFusionCharts({
@@ -122,73 +127,29 @@ $( document ).ready(function() {
 		});
 	}
 	
-	function getSource(value) {
+	function getSource(value,rsource) {
 		
 		var dataS = [];
 		//DATAS1
-		if(value == 1){
+		lab=rsource[value-1][4]
+		val=rsource[value-1][5]
 
-			dataS = [];
+		dataS = [];
 		
+	
 			dataS.push({ 
-		    "label" : "2559",
-		    "value"  : "220000"
+		    "label" : lab,
+		    "value"  : val
 		    });
-			dataS.push({ 
-	        "label" : "2558",
-	        "value"  : "430000"
-	    });
-			dataS.push({ 
-	        "label" : "2557",
-	        "value"  : "160000"
-	    });
 		
-		}
 		
-		//DATAS2
-		else if (value == 2){
-
-			dataS = [];
-		
-			dataS.push({ 
-		    "label" : "2559",
-		    "value"  : "420000"
-		    });
-			dataS.push({ 
-	        "label" : "2558",
-	        "value"  : "450000"
-	    });
-			dataS.push({ 
-	        "label" : "2557",
-	        "value"  : "460000"
-	    });
-		
-		}
-		
-		//DATAS3
-		else if(value == 3){
-			
-			dataS = [];
-		
-			dataS.push({ 
-		    "label" : "2559",
-		    "value"  : "320000"
-		    });
-			dataS.push({ 
-	        "label" : "2558",
-	        "value"  : "330000"
-	    });
-			dataS.push({ 
-	        "label" : "2557",
-	        "value"  : "550000"
-	    });
-		
-		}
 		return dataS;
 		
 	}
 	
-	function genBulletChart(chart_id,datasource){
+	function genBulletChart(chart_id,datasource,index){
+		
+		var bulletValue = datasource[index-1][3]
 
 		$(chart_id).insertFusionCharts({
 		        type: 'hbullet',
@@ -238,7 +199,7 @@ $( document ).ready(function() {
 		                    }
 		                ]
 		            },
-		            "target": "90"
+		            "target": bulletValue
 		        }
 		    });
 

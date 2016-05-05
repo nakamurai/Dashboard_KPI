@@ -17,7 +17,7 @@
 #Content .panel {
 	z-index:0;
 	float:left;
-	width:434.3px;
+	width:420px;
 	height:363px;
 	background:#FFFFFF;
 	margin-top:10px;
@@ -30,7 +30,7 @@
 #Content .panel .page {
  	float:left;
 	height:74px;
-	width:190px;
+	width:180px;
 	background:linear-gradient(#ececec, #d3d3d3);
 	margin-top:10px;
 	margin-left:10px;
@@ -60,5 +60,6 @@
 	font-weight:bold;
 	text-color:#405f7f;
 	background:#d4d4d4;
+	word-wrap: break-word;
 	padding:10px;
 }
